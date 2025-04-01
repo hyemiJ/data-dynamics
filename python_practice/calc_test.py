@@ -1,7 +1,6 @@
 from enum import Enum
 import re
 
-
 class Operator(Enum):
     """
     [Enum]해당 기호에 알맞는 계산을 수행합니다.
@@ -37,13 +36,12 @@ class Operator(Enum):
                 raise ZeroDivisionError("0을 나눌순 없다")
             return value1 / value2
 
-
 def parse_list(data_lst, type1, type2):
     """
     일치하는 연산자들의 앞,뒤의 값을 계산합니다.
     :param data_lst: (list)입력값을 연산자와 숫자를 리스트로 숫자와 연산자를 통해 계산을 수행합니다. [3, '-', 2,'+', 1.5]
-    :param type1: (Operator)곱셈, 나눗셈을 선 수행하기 위해 2개의 Enum을 받아 계산을 수행합니다.
-    :param type2: (Operator)곱셈, 나눗셈을 선 수행하기 위해 2개의 Enum을 받아 계산을 수행합니다.
+    :param type1:    (Operator)곱셈, 나눗셈을 선 수행하기 위해 2개의 Enum을 받아 계산을 수행합니다.
+    :param type2:    (Operator)곱셈, 나눗셈을 선 수행하기 위해 2개의 Enum을 받아 계산을 수행합니다.
     :return:
         list: 2개의 Enum 연산을 수행한 결과를 리스트의 형태로 반환합니다.
     """
@@ -68,24 +66,20 @@ def calculate(lst):
     data = []
     for str_data in lst:
         try:
-            temp_data = float(str_data)
-            data.append(temp_data)
+            data.append(float(str_data))
         except ValueError:
             data.append(str_data)
-
-    print(data)
+    
     try:
         data = parse_list(data, Operator.MUL, Operator.DIV)  # 곱셈,나눗셈 먼저 실행
-        print(data)
     except ZeroDivisionError:
         print("0을 나눌 수 없다.")
         return None
 
     data = parse_list(data, Operator.PLUS, Operator.MINUS)  # 덧셈,뺼셈 실행
-    print(data)
-
+    #print(data)
+ 
     return data[0]
-
 
 # 실행부
 user_input = input('사칙연산 계산기 숫자와 기호를 입력해주세요')
