@@ -1,3 +1,4 @@
+---
 #### Python Practice 정리 노트
 > [Python Practice - GitHub](https://github.com/hyemiJ/data-dynamics/tree/main/python_practice)
 > 파이썬 문법 연습 및 개념 정리 노트북 모음
